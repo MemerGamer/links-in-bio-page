@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Kovacs Balint Hunor - Links</title>
-	</head>
-	<body>
-		<h1>Hello world!</h1>
-		<header>
-			<h1>@wa_watashi_hiromitsu</h1>
-		</header>
-		<ul>
-			<li>
-				Official Website
-			</li>
-			<li>
-				Music
-			</li>
-			<li>
-				Github
-			</li>
-			<li>
-				Gitlab
-			</li>
-			<li>
-				Facebook
-			</li>
-		</ul>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kovács Bálint Hunor - Links</title>
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        VANTA.BIRDS({
+          el: "#vanta",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: true,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          backgroundAlpha: 0.0,
+          color2: 0xff00f0,
+          wingSpan: 40.0,
+          separation: 100.0,
+          alignment: 77.0,
+          cohesion: 5.0,
+          quantity: 1.0,
+        });
+
+        setTimeout(() => {
+          const main = document.querySelector("main");
+          main.style.opacity = 1;
+          main.style.filter = "blur(0px)";
+        }, 1000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="vanta"></div>
+    <main>
+      <header>
+        <div class="mask">
+          <img src="./images/me.png" class="profile-pic" alt="Profile-pic" />
+        </div>
+        <h1>@wa_watashi_hiromitsu</h1>
+      </header>
+      <ul>
+        <li>
+          <a href="https://www.kovacsbalinthunor.com" target="_blank">
+            <img src="./images/homepage.svg" alt="Homepage" width="20" />
+            Official Website
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/MemerGamer" target="_blank">
+            <img src="./images/github.svg" alt="Github" width="20" />
+            Github
+          </a>
+        </li>
+        <li>
+          <a href="https://gitlab.com/MemerGamer1" target="_blank">
+            <img src="./images/gitlab.svg" alt="Gitlab" width="20" />
+            Gitlab
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://open.spotify.com/artist/482gIda19w2rvYS0GeSLTP"
+            target="_blank"
+          >
+            <img src="./images/spotify.svg" alt="Spotify" width="20" />
+            Spotify
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/kovacsbalinthunor" target="_blank">
+            <img src="./images/facebook.svg" alt="Facebook" width="20" />
+            Facebook
+          </a>
+        </li>
+      </ul>
+    </main>
+  </body>
 </html>
