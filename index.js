@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
     minWidth: 200.0,
     scale: 1.0,
     scaleMobile: 1.0,
-    backgroundAlpha: 0.0,
+    backgroundColor: 0xa395e9,
     color1: 0x0,
     color2: 0x0,
     alignment: 77.0,
