@@ -4,61 +4,127 @@
     <meta charset="utf-8" />
     <title>Kovács Bálint Hunor - Links</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <meta name="description" content="Kovács Bálint Hunor's links site." />
   </head>
-  <body>
-    <div id="vanta"></div>
-    <main>
-      <header>
-        <div class="mask">
-          <img src="./images/me.webp" class="profile-pic" alt="Profile-pic" />
+  <body class="m-0 p-0 font-sans text-white min-h-screen" style="background: transparent;">
+    <div
+      id="vanta"
+      class="z-0 fixed left-0 top-0 w-full h-full"
+      style="background: transparent;"
+    ></div>
+    <main
+      class="relative opacity-0 blur-lg transition-all duration-700 ease-in-out animate-fade-in"
+    >
+      <header class="mt-12 mb-6 text-center flex flex-col items-center space-y-4">
+         <div
+           class="w-32 h-32 rounded-full overflow-hidden border-2 border-white/80 shadow-2xl hover:scale-105 transition-all duration-300"
+           style="box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);"
+         >
+           <img
+             src="./images/me.webp"
+             class="max-w-full relative"
+             style="bottom: 10px;"
+             alt="Profile-pic"
+           />
         </div>
         <a
           href="https://www.instagram.com/watashi_wa_hunor_desu/"
           target="_blank"
-          ><h1>@watashi_wa_hunor_desu</h1></a
+          rel="noopener"
+          class="inline-block text-xl font-bold rounded-full bg-gradient-to-r from-black/20 to-black/10 text-white px-8 py-4 border border-white/30 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
         >
+          <h1>@watashi_wa_hunor_desu</h1>
+        </a>
       </header>
-      <ul>
-        <li>
-          <a href="https://www.kovacsbalinthunor.com" target="_blank">
-            <img src="./images/homepage.svg" alt="Homepage" width="20" />
+      <ul class="list-none mx-auto px-4 sm:px-6 py-6 max-w-lg space-y-4 sm:space-y-5">
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
+          <a
+            rel="noopener"
+            href="https://www.kovacsbalinthunor.com"
+            target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
+          >
+            <i class="fas fa-home w-5 h-5 flex items-center justify-center text-blue-600"></i>
             Official Website
           </a>
         </li>
-        <li>
-          <a href="https://github.com/MemerGamer" target="_blank">
-            <img src="./images/github.svg" alt="Github" width="20" />
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
+          <a
+            rel="noopener"
+            href="https://github.com/MemerGamer"
+            target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
+          >
+            <i class="fab fa-github w-5 h-5 flex items-center justify-center text-gray-800"></i>
             Github
           </a>
         </li>
-        <li>
-          <a href="https://gitlab.com/MemerGamer1" target="_blank">
-            <img src="./images/gitlab.svg" alt="Gitlab" width="20" />
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
+          <a
+            rel="noopener"
+            href="https://gitlab.com/MemerGamer1"
+            target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
+          >
+            <i class="fab fa-gitlab w-5 h-5 flex items-center justify-center text-orange-600"></i>
             Gitlab
           </a>
         </li>
-        <li>
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
           <a
+            rel="noopener"
             href="https://open.spotify.com/artist/482gIda19w2rvYS0GeSLTP"
             target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
           >
-            <img src="./images/spotify.svg" alt="Spotify" width="20" />
+            <i class="fab fa-spotify w-5 h-5 flex items-center justify-center text-green-600"></i>
             Spotify
           </a>
         </li>
-        <li>
-          <a href="https://www.facebook.com/kovacsbalinthunor" target="_blank">
-            <img src="./images/facebook.svg" alt="Facebook" width="20" />
-            Facebook
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
+          <a
+            rel="noopener"
+            href="https://pypi.org/user/MemerGamer/"
+            target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
+          >
+            <i class="fab fa-python w-5 h-5 flex items-center justify-center text-blue-500"></i>
+            PyPI
+          </a>
+        </li>
+         <li
+           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
+         >
+          <a
+            rel="noopener"
+            href="https://aur.archlinux.org/packages?K=MemerGamer&SeB=m"
+            target="_blank"
+            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
+          >
+            <i class="fab fa-linux w-5 h-5 flex items-center justify-center text-gray-700"></i>
+            AUR
           </a>
         </li>
       </ul>
     </main>
 
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
       defer
     ></script>
     <script
