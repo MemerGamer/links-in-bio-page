@@ -4,133 +4,227 @@
     <meta charset="utf-8" />
     <title>Kovács Bálint Hunor - Links</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <meta name="description" content="Kovács Bálint Hunor's links site." />
+    <!-- Chromium: first paint waits for #content-end, so the page appears whole instead of row by row. -->
+    <link rel="expect" href="#content-end" blocking="render" />
+    <style>
+      *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
+      html {
+        /* Same colour as the birds' clear colour, so they appear without a jump. */
+        background: #a395e9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body { min-height: 100vh; color: #fff; background: transparent; }
+      h1 { font: inherit; }
+      a { color: inherit; text-decoration: inherit; }
+      ul { list-style: none; }
+
+      #vanta { position: fixed; top: 0; left: 0; z-index: 0; width: 100%; height: 100%; background: transparent; }
+      .vanta-canvas { animation: birds-in 0.8s ease-out; }
+      @keyframes birds-in { from { opacity: 0; } }
+      main { position: relative; }
+
+      .avatar, .handle, li {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .handle, li {
+        border-radius: 9999px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      }
+
+      header { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; text-align: center; }
+      .avatar {
+        width: 8rem;
+        height: 8rem;
+        overflow: hidden;
+        border: 2px solid rgb(255 255 255 / 0.8);
+        border-radius: 50%;
+        box-shadow: 0 8px 32px rgb(0 0 0 / 0.3), 0 0 0 1px rgb(255 255 255 / 0.1);
+      }
+      .avatar img { display: block; position: relative; bottom: 10px; max-width: 100%; height: auto; }
+      .handle {
+        padding: 1rem 2rem;
+        border: 1px solid rgb(255 255 255 / 0.3);
+        background: linear-gradient(to right, rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.1));
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 700;
+        /* Own layer: without it, GPU raster under SwiftShader drew this translucent gradient over white. */
+        will-change: transform;
+      }
+
+      ul { max-width: 32rem; margin: 0 auto; padding: 1.5rem 1rem; }
+      li { padding: 0.75rem; border: 1px solid rgb(255 255 255 / 0.2); background: rgb(255 255 255 / 0.95); }
+      li + li { margin-top: 1rem; }
+      li a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        color: #1e2939;
+        font-weight: 500;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      /* Same spot as the Font Awesome glyphs: 1em tall, at the top of a 1.25rem box. */
+      li svg { flex: none; width: 1.25rem; height: 1.25rem; padding-bottom: 0.25rem; fill: currentColor; }
+      .blue-600 { color: #155dfc; }
+      .blue-500 { color: #2b7fff; }
+      .gray-800 { color: #1e2939; }
+      .gray-700 { color: #364153; }
+      .orange-600 { color: #f54900; }
+      .green-600 { color: #00a63e; }
+      @supports (color: oklch(0 0 0)) {
+        li a, .gray-800 { color: oklch(27.8% 0.033 256.848); }
+        .blue-600 { color: oklch(54.6% 0.245 262.881); }
+        .blue-500 { color: oklch(62.3% 0.214 259.815); }
+        .gray-700 { color: oklch(37.3% 0.034 259.733); }
+        .orange-600 { color: oklch(64.6% 0.222 41.116); }
+        .green-600 { color: oklch(62.7% 0.194 149.214); }
+      }
+
+      @media (hover: hover) {
+        .avatar:hover, .handle:hover { scale: 1.05; }
+        .handle:hover, li:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        li:hover { scale: 1.05; translate: 0 -0.25rem; }
+        li a:hover { color: #000; text-decoration: underline; }
+      }
+      @media (min-width: 40rem) {
+        ul { padding-inline: 1.5rem; }
+        li + li { margin-top: 1.25rem; }
+      }
+    </style>
   </head>
-  <body class="m-0 p-0 font-sans text-white min-h-screen" style="background: transparent;">
-    <div
-      id="vanta"
-      class="z-0 fixed left-0 top-0 w-full h-full"
-      style="background: transparent;"
-    ></div>
-    <main
-      class="relative opacity-0 blur-lg transition-all duration-700 ease-in-out animate-fade-in"
-    >
-      <header class="mt-12 mb-6 text-center flex flex-col items-center space-y-4">
-         <div
-           class="w-32 h-32 rounded-full overflow-hidden border-2 border-white/80 shadow-2xl hover:scale-105 transition-all duration-300"
-           style="box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);"
-         >
-           <img
-             src="./images/me.webp"
-             class="max-w-full relative"
-             style="bottom: 10px;"
-             alt="Profile-pic"
-           />
+  <body>
+    <div id="vanta"></div>
+    <main>
+      <header>
+        <div class="avatar">
+          <!-- Inlined so it paints with the text. Made from images/me.webp:
+               magick images/me.webp -resize 248x -strip r.png && cwebp -q 85 -m 6 -alpha_q 40 r.png -o me.webp -->
+          <img src="data:image/webp;base64,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" width="248" height="342" decoding="sync" alt="Profile-pic" />
         </div>
-        <a
-          href="https://www.instagram.com/watashi_wa_hunor_desu/"
-          target="_blank"
-          rel="noopener"
-          class="inline-block text-xl font-bold rounded-full bg-gradient-to-r from-black/20 to-black/10 text-white px-8 py-4 border border-white/30 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-        >
+        <a class="handle" href="https://www.instagram.com/watashi_wa_hunor_desu/" target="_blank" rel="noopener">
           <h1>@watashi_wa_hunor_desu</h1>
         </a>
       </header>
-      <ul class="list-none mx-auto px-4 sm:px-6 py-6 max-w-lg space-y-4 sm:space-y-5">
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://www.kovacsbalinthunor.com"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fas fa-home w-5 h-5 flex items-center justify-center text-blue-600"></i>
+      <!-- Icons: Font Awesome Free 7.0.0 by @fontawesome, https://fontawesome.com, CC BY 4.0. -->
+      <ul>
+        <li>
+          <a href="https://www.kovacsbalinthunor.com" target="_blank" rel="noopener">
+            <svg class="blue-600" viewBox="0 0 512 512" aria-hidden="true"><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"/></svg>
             Official Website
           </a>
         </li>
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://github.com/MemerGamer"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fab fa-github w-5 h-5 flex items-center justify-center text-gray-800"></i>
+        <li>
+          <a href="https://github.com/MemerGamer" target="_blank" rel="noopener">
+            <svg class="gray-800" viewBox="0 0 512 512" aria-hidden="true"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM252.8 8c-138.7 0-244.8 105.3-244.8 244 0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1 100-33.2 167.8-128.1 167.8-239 0-138.7-112.5-244-251.2-244zM105.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
             Github
           </a>
         </li>
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://gitlab.com/MemerGamer1"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fab fa-gitlab w-5 h-5 flex items-center justify-center text-orange-600"></i>
+        <li>
+          <a href="https://gitlab.com/MemerGamer1" target="_blank" rel="noopener">
+            <svg class="orange-600" viewBox="0 0 512 512" aria-hidden="true"><path d="M504 204.6l-.7-1.8-69.7-181.8c-1.4-3.6-3.9-6.6-7.2-8.6-2.4-1.6-5.1-2.5-8-2.8s-5.7 .1-8.4 1.1-5.1 2.7-7.1 4.8c-1.9 2.1-3.3 4.7-4.1 7.4l-47 144-190.5 0-47.1-144c-.8-2.8-2.2-5.3-4.1-7.4-2-2.1-4.4-3.7-7.1-4.8-2.6-1-5.5-1.4-8.4-1.1s-5.6 1.2-8 2.8c-3.2 2-5.8 5.1-7.2 8.6L9.8 202.8 9 204.6c-10 26.2-11.3 55-3.5 82 7.7 26.9 24 50.7 46.4 67.6l.3 .2 .6 .4 106 79.5c38.5 29.1 66.7 50.3 84.6 63.9 3.7 1.9 8.3 4.3 13 4.3s9.3-2.4 13-4.3c17.9-13.5 46.1-34.9 84.6-63.9l106.7-79.9 .3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
             Gitlab
           </a>
         </li>
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://open.spotify.com/artist/482gIda19w2rvYS0GeSLTP"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fab fa-spotify w-5 h-5 flex items-center justify-center text-green-600"></i>
+        <li>
+          <a href="https://open.spotify.com/artist/482gIda19w2rvYS0GeSLTP" target="_blank" rel="noopener">
+            <svg class="green-600" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496zM356.7 372.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg>
             Spotify
           </a>
         </li>
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://pypi.org/user/MemerGamer/"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fab fa-python w-5 h-5 flex items-center justify-center text-blue-500"></i>
+        <li>
+          <a href="https://pypi.org/user/MemerGamer/" target="_blank" rel="noopener">
+            <svg class="blue-500" viewBox="0 0 448 512" aria-hidden="true"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2l-40.1 0 0 47.4c0 36.8-31.2 67.8-66.8 67.8l-106.8 0c-29.2 0-53.4 25-53.4 54.3l0 101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3l0-40.7-106.7 0 0-13.6 160.2 0c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7zM167.8 248.1l106.8 0c29.7 0 53.4-24.5 53.4-54.3l0-101.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6l0 40.7 106.9 0 0 13.6-147 0c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2l36.7 0 0-48.8c0-35.3 30.5-66.4 66.8-66.4zM161.2 64.7a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8z"/></svg>
             PyPI
           </a>
         </li>
-         <li
-           class="bg-white/95 backdrop-blur-xl backdrop-saturate-150 backdrop-contrast-180 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20"
-         >
-          <a
-            rel="noopener"
-            href="https://aur.archlinux.org/packages?K=MemerGamer&SeB=m"
-            target="_blank"
-            class="flex flex-row justify-center items-center gap-3 text-gray-800 font-medium no-underline hover:text-black hover:underline py-2 transition-all duration-200"
-          >
-            <i class="fab fa-linux w-5 h-5 flex items-center justify-center text-gray-700"></i>
+        <li>
+          <a href="https://aur.archlinux.org/packages?K=MemerGamer&amp;SeB=m" target="_blank" rel="noopener">
+            <svg class="gray-700" viewBox="0 0 448 512" aria-hidden="true"><path d="M220.9 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5 .2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4 .2-.8 .7-.6 1.1 .3 1.3 2.3 1.1 3.4 1.7zM199 125c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6 .2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5 .1-1.3 .6-3.4 1.5-3.2 2.9 .1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72 .5-45.9 5.1-131.2-75.8-131.3-102.4-.2-76.8 103.4-77.9 135.2-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9 .6 7.9 1.2 11.8 1.2 8.1 2.5 15.7 .8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1 .6 2.3 1.4 4.6 2.5 6.7l0 .1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3 .4-8.2-4.4-17.3-15.5-29.7zM223.8 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183.1 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4 .7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4l0-.2c2.4-7.6 .6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7 .8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4 .6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1 .8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7 .4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6 .8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1 .3-.2 .7-.3 1-.5 .8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.4 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
             AUR
           </a>
         </li>
       </ul>
+      <div id="content-end"></div>
     </main>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"
-      defer
-    ></script>
-    <script src="/index.js" defer></script>
+    <script>
+      // The birds are decoration, so nothing above waits for them. Skipped inside
+      // an iframe (the portfolio's story modal), for reduced motion and for Save-Data;
+      // the static background from the html rule stays in those cases and if a CDN fails.
+      (function () {
+        var connection = navigator.connection;
+        if (
+          window.top !== window.self ||
+          matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          (connection && connection.saveData)
+        ) {
+          return;
+        }
+
+        function loadScript(src, integrity, onload) {
+          var script = document.createElement("script");
+          script.src = src;
+          script.integrity = integrity;
+          script.crossOrigin = "anonymous";
+          script.onload = onload;
+          document.head.appendChild(script);
+        }
+
+        function startBirds() {
+          loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js",
+            "sha384-9EQoUIJYrv09/oYhSxnw1VpLcfPw3BM9dE7+D/3wGUPeLLa7F9Z6OAoD+i/M6FK9",
+            function () {
+              loadScript(
+                "https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js",
+                "sha384-gtCrx5xYOCU4ERCq2lWuiKQ0qCso/rtpn+d+hpx5xcqtw9KKyBkWgz37V8lc3/oT",
+                function () {
+                  VANTA.BIRDS({
+                    el: "#vanta",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 1.0,
+                    backgroundColor: 0xa395e9,
+                    color1: 0x0,
+                    color2: 0x0,
+                    alignment: 77.0,
+                    quantity: 2.0,
+                  });
+                }
+              );
+            }
+          );
+        }
+
+        // rAF + timeout lands after the first frame; then wait for an idle moment.
+        function afterFirstPaint() {
+          requestAnimationFrame(function () {
+            setTimeout(function () {
+              if (window.requestIdleCallback) {
+                requestIdleCallback(startBirds, { timeout: 2000 });
+              } else {
+                setTimeout(startBirds, 200);
+              }
+            }, 0);
+          });
+        }
+
+        if (document.readyState === "complete") {
+          afterFirstPaint();
+        } else {
+          window.addEventListener("load", afterFirstPaint);
+        }
+      })();
+    </script>
   </body>
 </html>
